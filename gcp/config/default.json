@@ -1,0 +1,7 @@
+{
+    "contracts": {
+        "DAI" :{
+            "slack_webhook_url": "https://hooks.slack.com/services/ZZZZZZZZZ/ZZZZZZZZZ/zzzzzzzzzzzzzzzzzzzzzzzz"
+        }
+    }
+}

@@ -1,7 +1,8 @@
 
 ### required
 
-- [ ] Get a serverless sample
+- [x] Get a serverless sample
+- [x] push something to a slack instance
 - [ ] get ethercast.io to hit a serverless sample
 - [ ] get non-sample deploying
 
