@@ -9,8 +9,10 @@
   "author": "serverless.com",
   "license": "MIT",
   "dependencies": {
-    "config":"^2.0.1",
+    "@slack/client": "^4.6.0",
+    "config": "^2.0.1",
+    "fs": "0.0.1-security",
     "serverless-google-cloudfunctions": "^1.1.0",
-    "@slack/client":"^4.6.0"
+    "web3": "^1.0.0-beta.36"
   }
 }

@@ -2,9 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "C:\\Users\\danno\\git\\github.com\\serverless\\examples\\google-node-simple-http-endpoint"
 		}
 	],
 	"settings": {}
