@@ -1,0 +1,15 @@
+resources:
+  - type: storage.v1.bucket
+    name: sls-wyohackathon-topicless-gcp-dev-1536420610636
+  - type: cloudfunctions.v1beta2.function
+    name: wyohackathon-topicless-gcp-dev-Test1
+    properties:
+      location: us-central1
+      availableMemoryMb: 256
+      timeout: 60s
+      function: http
+      sourceArchiveUrl: >-
+        gs://sls-wyohackathon-topicless-gcp-dev-1536420610636/serverless/wyohackathon-topicless-gcp/dev/1536420618777-2018-09-08T15:30:18.777Z/wyohackathon-topicless-gcp.zip
+      labels: {}
+      httpsTrigger:
+        url: path

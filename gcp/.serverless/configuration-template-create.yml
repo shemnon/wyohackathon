@@ -1,0 +1,3 @@
+resources:
+  - type: storage.v1.bucket
+    name: sls-wyohackathon-topicless-gcp-dev-1536420610636
