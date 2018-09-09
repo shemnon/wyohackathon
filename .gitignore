@@ -3,5 +3,5 @@
 */local.js
 */production.json
 .idea
-*/.serverless
+*/\.serverless
 */*.iml

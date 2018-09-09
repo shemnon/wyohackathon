@@ -16,7 +16,7 @@ package:
     - .git/**
 
 functions:
-  Test1:
+  topicless:
     handler: http
     events:
       - http: path
