@@ -1,5 +1,3 @@
-
-
 var config = require("config");
 var fs = require("fs")
 var Web3 = require("web3")
@@ -20,7 +18,7 @@ function decodeEvent(event, body) {
 
     var eventParams = {}
     for (var i in topics) {
-        value = web3.eth.abi.decodeParameter(topics[i].type, decodableTopics[i])
+        var value = web3.eth.abi.decodeParameter(topics[i].type, decodableTopics[i])
         eventParams[topics[i].name] =  value;
     }
 
@@ -46,13 +44,38 @@ function decodeEventFromAbi(abi, encodedEvent) {
     return {"name":event.name, "data":decodeEvent(event, encodedEvent)}
 }
 
+function wadToUSD(wad) {
+  return Math.round(Number(wad) / 10000000000000000) / 100;
+}
+
 
 exports.http = (request, response) => {
-  console.log('hola');
-  value = decodeEventFromAbi(daiAbi, request.body)
+  var value = decodeEventFromAbi(daiAbi, request.body)
+
+  var channel = "#test"
+  var text = "Unhandleded << " + JSON.stringify(value) + " >>";
+
+  if (value.name == 'Transfer') {
+    channel = "#teller"
+    var amount = wadToUSD(value.data.wad)
+    text = "💵💵 " + amount + " 💵💵 DAI from:" + value.data.src + " to:" + value.data.dst;
+  } else if (value.name = 'Mint') {
+    channel = "#vault"
+    var amount = wadToUSD(value.data.wad)
+    text = "💰💰 " + amount + " 💰💰 DAI created from thin air for " + value.data.guy;
+  } else if (value.name = 'Burn') {
+    channel = "#vault"
+    var amount = wadToUSD(value.data.wad)
+    text = "🔥🔥 " + amount + " 🔥🔥 DAI burnt by the pyro at " + value.data.guy;
+  } else if (value.name = 'Approval') {
+    channel = "#willcall"
+    var amount = wadToUSD(value.data.wad)
+    text = "💳💳 " + amount + " 💳💳 DAI to be spent from " + value.data.src + " by " + value.data.guy;
+  }
+
   // Send simple text to the webhook channel
   webhook.send(
-    " webhook <<" + JSON.stringify(value) + ">>", function(err, res) {
+    {"channel":channel, "text":text}, function(err, res) {
     if (err) {
         console.log('Error:', err);
     } else {
