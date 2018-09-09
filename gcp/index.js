@@ -1,4 +1,4 @@
-'use strict';
+
 
 var config = require("config");
 var fs = require("fs")
@@ -11,7 +11,6 @@ const webhook = new IncomingWebhook(url);
 var daiAbi = JSON.parse(fs.readFileSync('daiAbi.json'));
 
 var web3 = new Web3();
-
 
 function decodeEvent(event, body) {
     var topics = event.inputs.filter(v => v.indexed)
@@ -49,6 +48,7 @@ function decodeEventFromAbi(abi, encodedEvent) {
 
 
 exports.http = (request, response) => {
+  console.log('hola');
   value = decodeEventFromAbi(daiAbi, request.body)
   // Send simple text to the webhook channel
   webhook.send(
