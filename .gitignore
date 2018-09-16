@@ -1,7 +1,6 @@
-*/node_modules
-*/package-lock.json
-*/local.js
-*/production.json
-.idea
-*/\.serverless
-*/*.iml
+**/node_modules
+**/package-lock.json
+**/local.json
+**/.idea
+**/\.serverless
+**/*.iml
